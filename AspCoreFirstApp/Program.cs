@@ -21,6 +21,11 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name:"movieByRelease",
+    pattern:"Movie/ByRelease/{year:int}/{month:int}",
+    defaults:new {controller = "Movie", action="ByRelease"});
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 

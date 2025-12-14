@@ -25,7 +25,7 @@ public class MovieController : Controller
         return Content("Test Id "+id);
     }
 
-    public IActionResult ByRelease(int month, int year)
+    public IActionResult ByRelease(int year, int month)
     {
         return Content("Test Month " + month + " " + year);
     }
