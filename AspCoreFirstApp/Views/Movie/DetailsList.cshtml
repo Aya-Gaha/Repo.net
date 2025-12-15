@@ -1,5 +1,4 @@
-@model IEnumerable<AspCoreFirstApp.Models.Movie>
-
+@model AspCoreFirstApp.Models.Movie
 @{
     Layout = null;
 }
@@ -7,6 +6,9 @@
 <!DOCTYPE html>
 
 <html>
+<head>
+    <title>Détails du Film</title>
+</head>
 <style>
     .title {
         margin-bottom: 20px;
@@ -60,35 +62,13 @@
     }
 </style>
 
-<head>
-    <title>Movies</title>
-</head>
 <body>
-<h2 class="title">Liste des Films</h2>
-<table class="movie-table">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Image</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var movie in Model)
-    {
-        <tr>
-            <td>@movie.Id</td>
-            <td>
-                <a href="/Movie/DetailsList/@movie.Id">
-                    @movie.Name
-                </a>
-            </td>
-            <td>
-                <div class="img-placeholder"></div>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<h2 class="title">Détails du Film</h2>
+<div class="details-card">
+    <p><strong>ID :</strong> @Model.Id</p>
+    <p><strong>Nom :</strong> @Model.Name</p>
+</div>
+
+<a class="back-link" href="/Movie/Index">← Retour à la liste</a>
 </body>
 </html>

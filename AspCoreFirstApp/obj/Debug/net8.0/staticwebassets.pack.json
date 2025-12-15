@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\inception.jpeg",
+      "PackagePath": "staticwebassets\\inception.jpeg"
+    },
+    {
       "Id": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

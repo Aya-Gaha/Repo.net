@@ -8,15 +8,12 @@ public class MovieController : Controller
     // GET
     public IActionResult Index()
     { 
-        Movie movie = new Movie 
-        { 
-            Id = 1 , Name = "Movie 1"
-        };
-        List<Movie> movies = new List<Movie>()
+        var movies = new List<Movie>()
         {
-            new Movie {Id=2 , Name="Movie 2"}, 
-            new Movie {Id=3 , Name="Movie 3"}, 
-            new Movie {Id=4 , Name="Movie 4"},
+            new Movie {Id=1 , Name="Inception"}, 
+            new Movie {Id=2 , Name="The Matrix"}, 
+            new Movie {Id=3 , Name="Interstellar"},
+            new Movie {Id=4 , Name="Blade Runner 2049"},
         }; 
         return View(movies);
     }
@@ -50,5 +47,22 @@ public class MovieController : Controller
             Movies = movies
         };
         return View(vm);
+    }
+
+    public IActionResult DetailsList(int id)
+    {
+        var movie = new Movie
+        {
+            Id = id,
+            Name = id switch
+            {
+                1 => "Inception",
+                2 => "The Matrix",
+                3 => "Interstellar",
+                4 => "Blade Runner 2049",
+                _ => "Unknown"
+            }
+        };
+        return View(movie);
     }
 }

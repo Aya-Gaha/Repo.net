@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rTbUU4VLaGG0hhBwjsJJUjcM9/HdVBDO6EQ47VwsiwY=",
+  "Hash": "54vBgbOPCwxSvzJiAn2KuqM07O1OgaGOyYzLOYEqEEE=",
   "Source": "AspCoreFirstApp",
   "BasePath": "_content/AspCoreFirstApp",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\inception.jpeg",
+      "SourceId": "AspCoreFirstApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\",
+      "BasePath": "_content/AspCoreFirstApp",
+      "RelativePath": "inception.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\inception.jpeg"
     },
     {
       "Identity": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\js\\site.js",
