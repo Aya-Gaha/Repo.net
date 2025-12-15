@@ -25,11 +25,10 @@ public class MovieController : Controller
     {
         return Content("Test Id "+id);
     }
-    
+
     [HttpGet("Released/{year:int}/{month:int}")]
     public IActionResult ByRelease(int year, int month)
     {
         return Content($"[Attribute Routing] {month}/{year}");
-        //return Content("Test Month " + month + " " + year);
     }
 }
