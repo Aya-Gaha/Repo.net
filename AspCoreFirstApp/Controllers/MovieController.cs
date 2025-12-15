@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using AspCoreFirstApp.Models;
 namespace AspCoreFirstApp.Controllers;
 
+[Route("Movie")]
 public class MovieController : Controller
 {
     // GET
@@ -24,9 +25,11 @@ public class MovieController : Controller
     {
         return Content("Test Id "+id);
     }
-
-    public IActionResult ByRelease(int month, int year)
+    
+    [HttpGet("Released/{year:int}/{month:int}")]
+    public IActionResult ByRelease(int year, int month)
     {
-        return Content("Test Month " + month + " " + year);
+        return Content($"[Attribute Routing] {month}/{year}");
+        //return Content("Test Month " + month + " " + year);
     }
 }
