@@ -1,0 +1,27 @@
+@model AspCoreFirstApp.Models.ViewModels.MovieCustomerViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Customer Details</title>
+</head>
+<body>
+<h2>Customer Details</h2>
+<p>
+    <strong>Id:</strong> @Model.Customer.Id <br/>
+    <strong>Namme:</strong>@Model.Customer.Name
+</p>
+<h3>Movies</h3>
+<ul>
+    @foreach (var movie in Model.Movies)
+    {
+        <li>@movie.Name</li>
+    }
+</ul>
+</body>
+</html>

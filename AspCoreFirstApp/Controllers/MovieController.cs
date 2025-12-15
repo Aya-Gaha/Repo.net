@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AspCoreFirstApp.Models;
+using AspCoreFirstApp.Models.ViewModels;
 namespace AspCoreFirstApp.Controllers;
 
 public class MovieController : Controller
@@ -28,5 +29,26 @@ public class MovieController : Controller
     public IActionResult ByRelease(int month, int year)
     {
         return Content("Test Month " + month + " " + year);
+    }
+    
+    //ViewModel PART
+    public IActionResult Details(int id)
+    {
+        var customer = new Customer
+        {
+            Id = id,
+            Name = "Client" + id
+        };
+        var movies = new List<Movie>
+        {
+            new Movie { Id = 1, Name = "Movie 1" },
+            new Movie { Id = 2, Name = "Movie 2" }
+        };
+        var vm = new MovieCustomerViewModel
+        {
+            Customer = customer,
+            Movies = movies
+        };
+        return View(vm);
     }
 }
