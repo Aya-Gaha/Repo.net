@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AspCoreFirstApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b051a6ea9acbd2bba8fd9cf6aee7dfd5feaecf1a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52e685bd7f8953c7d2f55b6ec2d500f9b88ab13c")]
 [assembly: System.Reflection.AssemblyProductAttribute("AspCoreFirstApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AspCoreFirstApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
