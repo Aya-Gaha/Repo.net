@@ -4,6 +4,7 @@ using AspCoreFirstApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspCoreFirstApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260216205343_AddCustomerMembershipAuditAndMovieFields")]
+    partial class AddCustomerMembershipAuditAndMovieFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,32 +76,6 @@ namespace AspCoreFirstApp.Migrations
                     b.HasIndex("MembershipTypeId");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            MembershipTypeId = 1,
-                            Name = "Aya"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            MembershipTypeId = 2,
-                            Name = "Hend"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            MembershipTypeId = 3,
-                            Name = "Sami"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            MembershipTypeId = 2,
-                            Name = "Karim"
-                        });
                 });
 
             modelBuilder.Entity("AspCoreFirstApp.Models.Genre", b =>
@@ -161,22 +138,29 @@ namespace AspCoreFirstApp.Migrations
                         {
                             Id = 1,
                             DiscountRate = 0,
-                            DurationInMonth = 1,
+                            DurationInMonth = 0,
                             SignUpFee = 0m
                         },
                         new
                         {
                             Id = 2,
                             DiscountRate = 10,
-                            DurationInMonth = 6,
+                            DurationInMonth = 1,
                             SignUpFee = 30m
                         },
                         new
                         {
                             Id = 3,
+                            DiscountRate = 15,
+                            DurationInMonth = 3,
+                            SignUpFee = 90m
+                        },
+                        new
+                        {
+                            Id = 4,
                             DiscountRate = 20,
                             DurationInMonth = 12,
-                            SignUpFee = 90m
+                            SignUpFee = 300m
                         });
                 });
 

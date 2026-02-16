@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "54vBgbOPCwxSvzJiAn2KuqM07O1OgaGOyYzLOYEqEEE=",
+  "Hash": "nKYoZ9+my86eVNnLgwpnCC57QlIezHU7/xfak4DAd28=",
   "Source": "AspCoreFirstApp",
   "BasePath": "_content/AspCoreFirstApp",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\images\\movie_ad1ee33839d14d42902b8a0f8904a3d4.webp",
+      "SourceId": "AspCoreFirstApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\",
+      "BasePath": "_content/AspCoreFirstApp",
+      "RelativePath": "images/movie_ad1ee33839d14d42902b8a0f8904a3d4.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\movie_ad1ee33839d14d42902b8a0f8904a3d4.webp"
     },
     {
       "Identity": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\inception.jpeg",

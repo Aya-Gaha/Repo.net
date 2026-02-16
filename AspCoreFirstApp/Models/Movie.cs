@@ -10,7 +10,11 @@ public class Movie
 
     // Navigation property: nullable, car elle n'est pas envoyée par les formulaires
     public Genre? Genre { get; set; } = null!;
-    
+
+    public string? ImageFile { get; set; }
+
+    public DateTime? DateAjoutMovie { get; set; }
+
     public Movie()
     {
     }

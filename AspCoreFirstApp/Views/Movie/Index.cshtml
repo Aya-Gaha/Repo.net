@@ -13,6 +13,11 @@
         <h2 class="page-title mb-0">Liste des films</h2>
         <div class="text-muted small">@Model.TotalItemCount film(s) • Page @Model.PageNumber sur @Model.PageCount</div>
     </div>
+    <div class="page-actions">
+        <a class="btn btn-primary" asp-action="Create">
+            <i class="bi bi-plus-circle me-1"></i> Créer un film
+        </a>
+    </div>
 </div>
 
 <div class="card app-card">
@@ -47,7 +52,14 @@
                             @(movie.Genre?.Name ?? "—")
                         </td>
                         <td>
-                            <img src="~/inception.jpeg" class="poster-thumb" alt="Poster" />
+                            @if (!string.IsNullOrEmpty(movie.ImageFile))
+                            {
+                                <img src="~/images/@movie.ImageFile" class="poster-thumb" alt="@movie.Name" />
+                            }
+                            else
+                            {
+                                <img src="~/inception.jpeg" class="poster-thumb" alt="Placeholder" />
+                            }
                         </td>
                         <td class="text-end pe-3">
                             <div class="page-actions justify-content-end">

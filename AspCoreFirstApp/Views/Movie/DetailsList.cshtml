@@ -16,7 +16,14 @@
     <div class="card-body">
         <div class="row g-4 align-items-center">
             <div class="col-12 col-md-4">
-                <img src="~/inception.jpeg" alt="Poster" class="img-fluid rounded" />
+                @if (!string.IsNullOrEmpty(Model.ImageFile))
+                {
+                    <img src="~/images/@Model.ImageFile" alt="@Model.Name" class="img-fluid rounded" />
+                }
+                else
+                {
+                    <img src="~/inception.jpeg" alt="Placeholder" class="img-fluid rounded" />
+                }
             </div>
             <div class="col-12 col-md-8">
                 <dl class="row mb-0">
@@ -25,6 +32,12 @@
 
                     <dt class="col-sm-3">Nom</dt>
                     <dd class="col-sm-9 fw-semibold">@Model.Name</dd>
+
+                    @if (Model.DateAjoutMovie.HasValue)
+                    {
+                        <dt class="col-sm-3">Ajouté le</dt>
+                        <dd class="col-sm-9">@Model.DateAjoutMovie.Value.ToString("dd/MM/yyyy HH:mm")</dd>
+                    }
                 </dl>
             </div>
         </div>

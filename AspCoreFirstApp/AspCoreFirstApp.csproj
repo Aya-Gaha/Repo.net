@@ -20,4 +20,8 @@
       <PackageReference Include="X.PagedList.Mvc.Core" Version="10.5.9" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None Include="Data\Movies.json" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
 </Project>

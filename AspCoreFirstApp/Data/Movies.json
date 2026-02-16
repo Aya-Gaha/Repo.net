@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Inception",
+    "genreId": "22222222-2222-2222-2222-222222222222",
+    "imageFile": null,
+    "dateAjoutMovie": null
+  },
+  {
+    "id": 2,
+    "name": "Interstellar",
+    "genreId": "22222222-2222-2222-2222-222222222222",
+    "imageFile": null,
+    "dateAjoutMovie": null
+  },
+  {
+    "id": 3,
+    "name": "The Matrix",
+    "genreId": "22222222-2222-2222-2222-222222222222",
+    "imageFile": null,
+    "dateAjoutMovie": null
+  }
+]

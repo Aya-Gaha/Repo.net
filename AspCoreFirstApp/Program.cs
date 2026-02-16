@@ -1,4 +1,5 @@
 using AspCoreFirstApp.Models;
+using AspCoreFirstApp.Models.Interceptors;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
+    .AddInterceptors(new AuditSaveChangesInterceptor())
 );
 var app = builder.Build();
 
@@ -32,3 +34,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

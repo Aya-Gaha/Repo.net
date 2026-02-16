@@ -5,15 +5,18 @@ using X.PagedList;
 using X.PagedList.Extensions;
 
 namespace AspCoreFirstApp.Controllers;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;   // at the top of the file
 
 public class MovieController : Controller
 {
     private readonly ApplicationDbContext _dbContext;
+    private readonly IWebHostEnvironment _env;
 
-    public MovieController(ApplicationDbContext dbContext)
+    public MovieController(ApplicationDbContext dbContext, IWebHostEnvironment env)
     {
         _dbContext = dbContext;
+        _env = env;
     }
     // TP1
     // GET
@@ -168,5 +171,50 @@ public class MovieController : Controller
     //     };
     //     return View(movie);
     // }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        PopulateGenres();
+        return View(new MovieVM());
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(MovieVM vm)
+    {
+        PopulateGenres(vm.Movie.GenreId);
+
+        if (!ModelState.IsValid)
+            return View(vm);
+
+        if (vm.Photo is { Length: > 0 })
+        {
+            var imagesDir = Path.Combine(_env.WebRootPath, "images");
+            Directory.CreateDirectory(imagesDir);
+
+            var ext = Path.GetExtension(vm.Photo.FileName);
+            var fileName = $"movie_{Guid.NewGuid():N}{ext}";
+            var filePath = Path.Combine(imagesDir, fileName);
+
+            await using var stream = System.IO.File.Create(filePath);
+            await vm.Photo.CopyToAsync(stream);
+
+            vm.Movie.ImageFile = fileName;
+        }
+
+        vm.Movie.DateAjoutMovie ??= DateTime.UtcNow;
+
+        _dbContext.Movies!.Add(vm.Movie);
+        await _dbContext.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    private void PopulateGenres(Guid? selectedId = null)
+    {
+        var genres = _dbContext.Genres.OrderBy(g => g.Name).ToList();
+        ViewBag.Genres = new SelectList(genres, "Id", "Name", selectedId);
+    }
 
 }

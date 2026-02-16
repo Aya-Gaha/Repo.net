@@ -138,3 +138,4 @@ C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\obj\Debug\net8.0\As
 C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\bin\Debug\net8.0\X.PagedList.dll
 C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
 C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\obj\Debug\net8.0\AspCoreFirstApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\bin\Debug\net8.0\Data\Movies.json

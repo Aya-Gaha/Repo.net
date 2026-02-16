@@ -1,16 +1,16 @@
-@model IEnumerable<AspCoreFirstApp.Models.Genre>
+@model IEnumerable<AspCoreFirstApp.Models.Customer>
 
 @{
-    ViewData["Title"] = "Genres";
+    ViewData["Title"] = "Customers";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <div>
-        <h2 class="page-title mb-0">Genres</h2>
-        <div class="text-muted small">@Model.Count() genre(s)</div>
+        <h2 class="page-title mb-0">Customers</h2>
+        <div class="text-muted small">@Model.Count() client(s)</div>
     </div>
     <div class="page-actions">
-        <a class="btn btn-primary" asp-action="Create">+ Créer un genre</a>
+        <a class="btn btn-primary" asp-action="Create">+ Créer un client</a>
     </div>
 </div>
 
@@ -21,18 +21,21 @@
                 <thead class="table-primary">
                 <tr>
                     <th>Nom</th>
+                    <th>DiscountRate</th>
                     <th class="text-end pe-3" style="width:220px">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach (var genre in Model)
+                @foreach (var customer in Model)
                 {
                     <tr>
-                        <td class="fw-semibold">@genre.Name</td>
+                        <td class="fw-semibold">@customer.Name</td>
+                        <td>@customer.MembershipType?.DiscountRate</td>
                         <td class="text-end pe-3">
                             <div class="page-actions justify-content-end">
-                                <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@genre.Id">Modifier</a>
-                                <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@genre.Id">Supprimer</a>
+                                <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@customer.Id">Edit</a>
+                                <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@customer.Id">Details</a>
+                                <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@customer.Id">Delete</a>
                             </div>
                         </td>
                     </tr>
