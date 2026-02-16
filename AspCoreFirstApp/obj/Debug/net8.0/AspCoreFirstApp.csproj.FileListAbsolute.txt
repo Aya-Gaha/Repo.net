@@ -139,3 +139,5 @@ C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\obj\Debug\net8.0\re
 C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\obj\Debug\net8.0\AspCoreFirstApp.pdb
 C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\obj\Debug\net8.0\AspCoreFirstApp.genruntimeconfig.cache
 C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\obj\Debug\net8.0\ref\AspCoreFirstApp.dll
+C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll

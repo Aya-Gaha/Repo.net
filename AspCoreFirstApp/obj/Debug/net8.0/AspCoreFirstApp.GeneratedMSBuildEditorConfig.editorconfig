@@ -18,6 +18,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Account/PanierParUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQYW5pZXJQYXJVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Account/UserManagement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVc2VyTWFuYWdlbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Customers/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -88,6 +108,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Shared/_ValidationScriptsPartial.cshtml]

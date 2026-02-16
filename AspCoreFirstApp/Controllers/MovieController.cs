@@ -3,6 +3,7 @@ using AspCoreFirstApp.Models;
 using AspCoreFirstApp.Models.ViewModels;
 using AspCoreFirstApp.Repositories.Interfaces;
 using AspCoreFirstApp.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using X.PagedList;
 using X.PagedList.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -74,6 +75,7 @@ public class MovieController : Controller
     }
 
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int id)
     {
         var movie = await _movieService.GetMovieByIdAsync(id);
@@ -85,6 +87,7 @@ public class MovieController : Controller
 
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         if (!await _movieService.MovieExistsAsync(id))

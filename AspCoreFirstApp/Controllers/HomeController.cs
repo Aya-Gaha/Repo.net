@@ -15,6 +15,13 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        // Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion
+        if (!User.Identity?.IsAuthenticated ?? true)
+        {
+            return RedirectToAction("Login", "Account");
+        }
+        
+        // Si connecté, afficher le dashboard
         return View();
     }
 

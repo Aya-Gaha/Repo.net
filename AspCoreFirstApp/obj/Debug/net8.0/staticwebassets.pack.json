@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\images\\movie_4bda5fcd83b249bb83668ef39bf93ef3.webp",
+      "PackagePath": "staticwebassets\\images\\movie_4bda5fcd83b249bb83668ef39bf93ef3.webp"
+    },
+    {
       "Id": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\images\\movie_a7a18dcd9b2b4363acf5da7b94f54af0.jpeg",
       "PackagePath": "staticwebassets\\images\\movie_a7a18dcd9b2b4363acf5da7b94f54af0.jpeg"
     },

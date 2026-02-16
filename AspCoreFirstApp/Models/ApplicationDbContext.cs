@@ -1,17 +1,19 @@
 namespace AspCoreFirstApp.Models;
 using System.Text.Json;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
-    public ApplicationDbContext(DbContextOptions options):base(options) {}
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) {}
     public DbSet<Movie>? Movies { get; set; } 
     public DbSet<Genre> Genres { get; set; }
-
     public DbSet<Customer> Customers { get; set; }
     public DbSet<MembershipType> MembershipTypes { get; set; }
     public DbSet<AuditLog> AuditLogs { get; set; }
+    public DbSet<Produit> Produits { get; set; }
+    public DbSet<PanierParUser> Paniers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
