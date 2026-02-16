@@ -135,3 +135,6 @@ C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\bin\Debug\net8.0\ru
 C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\obj\Debug\net8.0\AspCoreFirstApp.csproj.AssemblyReference.cache
 C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\obj\Debug\net8.0\AspCoreF.3171E61A.Up2Date
+C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\bin\Debug\net8.0\X.PagedList.dll
+C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp\obj\Debug\net8.0\AspCoreFirstApp.MvcApplicationPartsAssemblyInfo.cs

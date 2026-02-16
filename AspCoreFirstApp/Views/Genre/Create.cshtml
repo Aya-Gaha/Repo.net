@@ -1,19 +1,18 @@
-@model AspCoreFirstApp.Models.Movie
+@model AspCoreFirstApp.Models.Genre
 
 @{
-    ViewData["Title"] = "Modifier le film";
+    ViewData["Title"] = "Créer un genre";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="page-title mb-0">Modifier le film</h2>
+    <h2 class="page-title mb-0">Créer un genre</h2>
     <a class="btn btn-outline-secondary" asp-action="Index">← Retour</a>
 </div>
 
 <div class="card app-card">
     <div class="card-body">
-        <form asp-action="Edit" method="post" class="row g-3">
+        <form asp-action="Create" method="post" class="row g-3">
             @Html.AntiForgeryToken()
-            <input type="hidden" asp-for="Id" />
 
             <div class="col-12">
                 <label asp-for="Name" class="form-label"></label>
@@ -22,7 +21,7 @@
             </div>
 
             <div class="col-12 d-flex gap-2">
-                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                <button type="submit" class="btn btn-primary">Créer</button>
                 <a class="btn btn-outline-secondary" asp-action="Index">Annuler</a>
             </div>
         </form>

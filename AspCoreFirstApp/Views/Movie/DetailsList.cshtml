@@ -1,128 +1,32 @@
 @model AspCoreFirstApp.Models.Movie
+
 @{
-    Layout = null;
+    ViewData["Title"] = "Détails du film";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>Détails du Film</title>
-</head>
-<style>
-    .title {
-        margin-bottom: 20px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    .movie-table {
-        width: 80%;
-        margin: auto;
-        border-collapse: collapse;
-    }
-
-    .movie-table th,
-    .movie-table td {
-        padding: 12px;
-        border-bottom: 1px solid #ddd;
-        text-align: center;
-    }
-
-    .movie-table tr:nth-child(even) {
-        background-color: #f5f5f5;
-    }
-
-    .movie-table a {
-        color: #0066ff;
-        text-decoration: none;
-        font-weight: 500;
-    }
-
-    .img-placeholder {
-        width: 40px;
-        height: 50px;
-        border: 1px solid #ccc;
-        margin: auto;
-        background-color: #fafafa;
-    }
-
-    .details-card {
-        width: 300px;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        margin-top: 20px;
-    }
-
-    .back-link {
-        display: inline-block;
-        margin-top: 20px;
-        text-decoration: none;
-        color: #0066ff;
-    }
-    
-    /*added 1 */
-    /* --- Consistency with Index page --- */
-    body {
-        font-family: "Segoe UI", Roboto, Arial, sans-serif;
-        background-color: #f4f6f8;
-        padding: 40px 0;
-    }
-
-    .details-container {
-        width: 75%;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-    }
-
-    .details-card {
-        background-color: white;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        border-radius: 10px;
-        padding: 25px;
-        text-align: center;
-    }
-
-    .details-card img {
-        width: 120px;
-        height: 170px;
-        object-fit: cover;
-        border-radius: 6px;
-        margin-bottom: 15px;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    }
-
-    .back-link {
-        display: block;
-        text-align: center;
-        margin-top: 25px;
-        font-weight: 500;
-    }
-
-</style>
-
-<body>
-<h2 class="title">Détails du Film</h2>
-
-<div class="details-container">
-    <div class="details-card">
-        <img src="~/inception.jpeg" alt="Inception" />
-
-        <p><strong>ID :</strong> @Model.Id</p>
-        <p><strong>Nom :</strong> @Model.Name</p>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="page-title mb-0">Détails du film</h2>
+    <div class="page-actions">
+        <a class="btn btn-outline-secondary" asp-action="Index">← Retour à la liste</a>
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Modifier</a>
     </div>
 </div>
 
-<a class="back-link" href="/Movie/Index">← Retour à la liste</a>
+<div class="card app-card">
+    <div class="card-body">
+        <div class="row g-4 align-items-center">
+            <div class="col-12 col-md-4">
+                <img src="~/inception.jpeg" alt="Poster" class="img-fluid rounded" />
+            </div>
+            <div class="col-12 col-md-8">
+                <dl class="row mb-0">
+                    <dt class="col-sm-3">ID</dt>
+                    <dd class="col-sm-9">@Model.Id</dd>
 
-@* <h2 class="title">Détails du Film</h2> *@
-@* <div class="details-card"> *@
-@*     <p><strong>ID :</strong> @Model.Id</p> *@
-@*     <p><strong>Nom :</strong> @Model.Name</p> *@
-@* </div> *@
-@* *@
-@* <a class="back-link" href="/Movie/Index">← Retour à la liste</a> *@
-</body>
-</html>
+                    <dt class="col-sm-3">Nom</dt>
+                    <dd class="col-sm-9 fw-semibold">@Model.Name</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

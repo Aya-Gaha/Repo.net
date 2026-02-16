@@ -1,0 +1,37 @@
+@model IEnumerable<AspCoreFirstApp.Models.Genre>
+
+@{
+    ViewData["Title"] = "Genres";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h2 class="page-title mb-0">Genres</h2>
+        <div class="text-muted small">@Model.Count() genre(s)</div>
+    </div>
+    <div class="page-actions">
+        <a class="btn btn-primary" asp-action="Create">+ Créer un genre</a>
+    </div>
+</div>
+
+<div class="card app-card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-primary">
+                <tr>
+                    <th>Nom</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var genre in Model)
+                {
+                    <tr>
+                        <td class="fw-semibold">@genre.Name</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

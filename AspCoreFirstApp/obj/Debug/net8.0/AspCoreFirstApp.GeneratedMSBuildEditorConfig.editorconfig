@@ -18,12 +18,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\ayaga\RiderProjects\AspCoreFirstApp\AspCoreFirstApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Genre/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Genre/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Movie/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ayaga/RiderProjects/AspCoreFirstApp/AspCoreFirstApp/Views/Movie/Details.cshtml]

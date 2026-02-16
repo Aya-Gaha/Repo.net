@@ -4,6 +4,7 @@ using AspCoreFirstApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspCoreFirstApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260209204555_SeedGenres")]
+    partial class SeedGenres
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +38,7 @@ namespace AspCoreFirstApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres");
+                    b.ToTable("genres");
 
                     b.HasData(
                         new
@@ -63,53 +66,12 @@ namespace AspCoreFirstApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<Guid>("GenreId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenreId");
-
-                    b.ToTable("Movies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            GenreId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Name = "Inception"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            GenreId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Name = "Interstellar"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            GenreId = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Name = "The Matrix"
-                        });
-                });
-
-            modelBuilder.Entity("AspCoreFirstApp.Models.Movie", b =>
-                {
-                    b.HasOne("AspCoreFirstApp.Models.Genre", "Genre")
-                        .WithMany("Movies")
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Genre");
-                });
-
-            modelBuilder.Entity("AspCoreFirstApp.Models.Genre", b =>
-                {
-                    b.Navigation("Movies");
+                    b.ToTable("movies");
                 });
 #pragma warning restore 612, 618
         }
