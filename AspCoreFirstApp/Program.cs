@@ -1,6 +1,11 @@
 using AspCoreFirstApp.Models;
 using AspCoreFirstApp.Models.Interceptors;
+using AspCoreFirstApp.Repositories;
+using AspCoreFirstApp.Repositories.Interfaces;
+using AspCoreFirstApp.Services;
+using AspCoreFirstApp.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +17,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     )
     .AddInterceptors(new AuditSaveChangesInterceptor())
 );
+
+// Register Repositories
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IMembershipTypeRepository, MembershipTypeRepository>();
+builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+
+// Register Services
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IMovieService, MovieService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

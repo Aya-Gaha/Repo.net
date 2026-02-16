@@ -1,138 +1,139 @@
 using Microsoft.AspNetCore.Mvc;
 using AspCoreFirstApp.Models;
 using AspCoreFirstApp.Models.ViewModels;
+using AspCoreFirstApp.Repositories.Interfaces;
+using AspCoreFirstApp.Services.Interfaces;
 using X.PagedList;
 using X.PagedList.Extensions;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AspCoreFirstApp.Controllers;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;   // at the top of the file
 
 public class MovieController : Controller
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly IMovieService _movieService;
+    private readonly IGenreRepository _genreRepository;
     private readonly IWebHostEnvironment _env;
 
-    public MovieController(ApplicationDbContext dbContext, IWebHostEnvironment env)
+    public MovieController(IMovieService movieService, IGenreRepository genreRepository, IWebHostEnvironment env)
     {
-        _dbContext = dbContext;
+        _movieService = movieService;
+        _genreRepository = genreRepository;
         _env = env;
     }
-    // TP1
-    // GET
-    // public IActionResult Index()
-    // { 
-    //     /*var movies = new List<Movie>()
-    //     {
-    //         new Movie {Id=1 , Name="Inception"}, 
-    //         new Movie {Id=2 , Name="The Matrix"}, 
-    //         new Movie {Id=3 , Name="Interstellar"},
-    //         new Movie {Id=4 , Name="Blade Runner 2049"},
-    //     }; */
-    //     var movies = _dbContext.Movies.ToList();
-    //     return View(movies);
-    // }
-    // public IActionResult Index(string sortOrder)
-    // {
-    //     ViewData["NameSort"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-    //
-    //     var movies = from m in _dbContext.Movies
-    //         select m;
-    //
-    //     if (sortOrder == "name_desc")
-    //         movies = movies.OrderByDescending(m => m.Name);
-    //     else
-    //         movies = movies.OrderBy(m => m.Name);
-    //
-    //     return View(movies.ToList());
-    // }
-    
-    public IActionResult Index(string sortOrder, int? page)
+
+    public async Task<IActionResult> Index(string sortOrder, int? page)
     {
-        // sortOrder = tri courant
         ViewData["CurrentSort"] = sortOrder;
-
-        // NameSort = tri à appliquer au prochain clic sur l'en-tête "Name"
         ViewData["NameSort"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-
-        var movies = _dbContext.Movies.AsQueryable()
-            .Include(m => m.Genre)
-            .AsQueryable();
-
-        movies = sortOrder == "name_desc"
-            ? movies.OrderByDescending(m => m.Name)
-            : movies.OrderBy(m => m.Name);
 
         int pageSize = 5;
         int pageNumber = page ?? 1;
 
-        return View(movies.ToPagedList(pageNumber, pageSize));
+        var (movies, totalCount) = await _movieService.GetPagedMoviesAsync(pageNumber, pageSize, sortOrder);
+        
+        var pagedList = new StaticPagedList<Movie>(
+            movies,
+            pageNumber,
+            pageSize,
+            totalCount
+        );
+
+        return View(pagedList);
     }
 
-    public IActionResult detailsList(int id)
+    public async Task<IActionResult> detailsList(int id)
     {
-        var movie = _dbContext.Movies.FirstOrDefault(m => m.Id == id);
+        var movie = await _movieService.GetMovieByIdAsync(id);
         if (movie == null)
             return NotFound();
         return View(movie);
     }
-    public IActionResult Edit(int id)
-    {   
-        var movie = _dbContext.Movies.Find(id);
+
+    [HttpGet]
+    public async Task<IActionResult> Edit(int id)
+    {
+        var movie = await _movieService.GetMovieByIdAsync(id);
         if (movie == null)
             return NotFound();
         return View(movie);
     }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(Movie movie)
+    public async Task<IActionResult> Edit(Movie movie)
     {
-        Console.WriteLine("POST ID = " + movie.Id);
         if (!ModelState.IsValid)
             return View(movie);
 
-        var movieInDb = _dbContext.Movies.FirstOrDefault(m => m.Id == movie.Id);
-        if (movieInDb == null)
+        if (!await _movieService.MovieExistsAsync(movie.Id))
             return NotFound();
 
-        // Mettre à jour uniquement les champs édités par le formulaire
-        movieInDb.Name = movie.Name;
-
-        _dbContext.SaveChanges();
+        await _movieService.UpdateMovieAsync(movie);
         return RedirectToAction(nameof(Index));
     }
+
     [HttpGet]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var movie = _dbContext.Movies.Find(id);
+        var movie = await _movieService.GetMovieByIdAsync(id);
         if (movie == null)
             return NotFound();
 
         return View(movie);
     }
-    
+
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public IActionResult DeleteConfirmed(int id)
+    public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var movie = _dbContext.Movies.Find(id);
-        _dbContext.Movies.Remove(movie);
-        _dbContext.SaveChanges();
+        if (!await _movieService.MovieExistsAsync(id))
+            return NotFound();
+
+        await _movieService.DeleteMovieAsync(id);
         return RedirectToAction(nameof(Index));
     }
-    
 
-    //TP 1
-    // public IActionResult Edit(int id)
-    // {
-    //     return Content("Test Id "+id);
-    // }
+    [HttpGet]
+    public async Task<IActionResult> Create()
+    {
+        await PopulateGenresAsync();
+        return View(new MovieVM());
+    }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(MovieVM vm)
+    {
+        await PopulateGenresAsync(vm.Movie.GenreId);
+
+        if (!ModelState.IsValid)
+            return View(vm);
+
+        await _movieService.CreateMovieAsync(vm.Movie, vm.Photo, _env.WebRootPath);
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    // LINQ Query Examples
+    public async Task<IActionResult> MoviesByDate()
+    {
+        var movies = await _movieService.GetMoviesOrderedByDateAsync();
+        return View("Index", movies.ToPagedList(1, 10));
+    }
+
+    public async Task<IActionResult> MoviesByGenre()
+    {
+        var groupedMovies = await _movieService.GetMoviesGroupedByGenreAsync();
+        return Json(groupedMovies);
+    }
+
+    // Legacy actions kept for compatibility
     public IActionResult ByRelease(int month, int year)
     {
         return Content("Test Month " + month + " " + year);
     }
-    //ViewModel PART
+
     public IActionResult Details(int id)
     {
         var customer = new Customer
@@ -152,68 +153,10 @@ public class MovieController : Controller
         };
         return View(vm);
     }
-    
 
-    // TP1 details movie
-    // public IActionResult DetailsList(int id)
-    // {
-    //     var movie = new Movie
-    //     {
-    //         Id = id,
-    //         Name = id switch
-    //         {
-    //             1 => "Inception",
-    //             2 => "The Matrix",
-    //             3 => "Interstellar",
-    //             4 => "Blade Runner 2049",
-    //             _ => "Unknown"
-    //         }
-    //     };
-    //     return View(movie);
-    // }
-
-    [HttpGet]
-    public IActionResult Create()
+    private async Task PopulateGenresAsync(Guid? selectedId = null)
     {
-        PopulateGenres();
-        return View(new MovieVM());
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(MovieVM vm)
-    {
-        PopulateGenres(vm.Movie.GenreId);
-
-        if (!ModelState.IsValid)
-            return View(vm);
-
-        if (vm.Photo is { Length: > 0 })
-        {
-            var imagesDir = Path.Combine(_env.WebRootPath, "images");
-            Directory.CreateDirectory(imagesDir);
-
-            var ext = Path.GetExtension(vm.Photo.FileName);
-            var fileName = $"movie_{Guid.NewGuid():N}{ext}";
-            var filePath = Path.Combine(imagesDir, fileName);
-
-            await using var stream = System.IO.File.Create(filePath);
-            await vm.Photo.CopyToAsync(stream);
-
-            vm.Movie.ImageFile = fileName;
-        }
-
-        vm.Movie.DateAjoutMovie ??= DateTime.UtcNow;
-
-        _dbContext.Movies!.Add(vm.Movie);
-        await _dbContext.SaveChangesAsync();
-
-        return RedirectToAction(nameof(Index));
-    }
-
-    private void PopulateGenres(Guid? selectedId = null)
-    {
-        var genres = _dbContext.Genres.OrderBy(g => g.Name).ToList();
+        var genres = await _genreRepository.GetAllAsync();
         ViewBag.Genres = new SelectList(genres, "Id", "Name", selectedId);
     }
 
