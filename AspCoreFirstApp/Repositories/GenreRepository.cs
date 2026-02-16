@@ -4,24 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspCoreFirstApp.Repositories;
 
-public class GenreRepository : IGenreRepository
+public class GenreRepository : GenericRepository<Genre>, IGenreRepository
 {
     private readonly ApplicationDbContext _context;
 
-    public GenreRepository(ApplicationDbContext context)
+    public GenreRepository(ApplicationDbContext context) : base(context)
     {
         _context = context;
-    }
-
-    public async Task<IEnumerable<Genre>> GetAllAsync()
-    {
-        return await _context.Genres
-            .OrderBy(g => g.Name)
-            .ToListAsync();
-    }
-
-    public async Task<Genre?> GetByIdAsync(Guid id)
-    {
-        return await _context.Genres.FindAsync(id);
     }
 }

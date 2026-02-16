@@ -4,18 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspCoreFirstApp.Repositories;
 
-public class MovieRepository : IMovieRepository
+public class MovieRepository : GenericRepository<Movie>, IMovieRepository
 {
     private readonly ApplicationDbContext _context;
 
-    public MovieRepository(ApplicationDbContext context)
+    public MovieRepository(ApplicationDbContext context) : base(context)
     {
         _context = context;
-    }
-
-    public async Task<IEnumerable<Movie>> GetAllAsync()
-    {
-        return await _context.Movies!.ToListAsync();
     }
 
     public async Task<IEnumerable<Movie>> GetAllWithGenreAsync()
@@ -44,11 +39,6 @@ public class MovieRepository : IMovieRepository
         return await _context.Movies!.CountAsync();
     }
 
-    public async Task<Movie?> GetByIdAsync(int id)
-    {
-        return await _context.Movies!.FindAsync(id);
-    }
-
     public async Task<Movie?> GetByIdWithGenreAsync(int id)
     {
         return await _context.Movies!
@@ -73,39 +63,5 @@ public class MovieRepository : IMovieRepository
                 g => g.Key,
                 g => g.ToList()
             );
-    }
-
-    public async Task AddAsync(Movie movie)
-    {
-        await _context.Movies!.AddAsync(movie);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task UpdateAsync(Movie movie)
-    {
-        var existingMovie = await _context.Movies!.FindAsync(movie.Id);
-        if (existingMovie != null)
-        {
-            existingMovie.Name = movie.Name;
-            existingMovie.GenreId = movie.GenreId;
-            existingMovie.ImageFile = movie.ImageFile;
-            existingMovie.DateAjoutMovie = movie.DateAjoutMovie;
-            await _context.SaveChangesAsync();
-        }
-    }
-
-    public async Task DeleteAsync(int id)
-    {
-        var movie = await _context.Movies!.FindAsync(id);
-        if (movie != null)
-        {
-            _context.Movies.Remove(movie);
-            await _context.SaveChangesAsync();
-        }
-    }
-
-    public async Task<bool> ExistsAsync(int id)
-    {
-        return await _context.Movies!.AnyAsync(m => m.Id == id);
     }
 }

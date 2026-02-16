@@ -71,16 +71,19 @@ public class MovieService : IMovieService
         movie.DateAjoutMovie ??= DateTime.UtcNow;
 
         await _movieRepository.AddAsync(movie);
+        await _movieRepository.SaveChangesAsync();
     }
 
     public async Task UpdateMovieAsync(Movie movie)
     {
-        await _movieRepository.UpdateAsync(movie);
+        _movieRepository.Update(movie);
+        await _movieRepository.SaveChangesAsync();
     }
 
     public async Task DeleteMovieAsync(int id)
     {
         await _movieRepository.DeleteAsync(id);
+        await _movieRepository.SaveChangesAsync();
     }
 
     public async Task<bool> MovieExistsAsync(int id)

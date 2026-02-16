@@ -46,16 +46,19 @@ public class CustomerService : ICustomerService
     public async Task CreateCustomerAsync(Customer customer)
     {
         await _customerRepository.AddAsync(customer);
+        await _customerRepository.SaveChangesAsync();
     }
 
     public async Task UpdateCustomerAsync(Customer customer)
     {
-        await _customerRepository.UpdateAsync(customer);
+        _customerRepository.Update(customer);
+        await _customerRepository.SaveChangesAsync();
     }
 
     public async Task DeleteCustomerAsync(int id)
     {
         await _customerRepository.DeleteAsync(id);
+        await _customerRepository.SaveChangesAsync();
     }
 
     public async Task<bool> CustomerExistsAsync(int id)

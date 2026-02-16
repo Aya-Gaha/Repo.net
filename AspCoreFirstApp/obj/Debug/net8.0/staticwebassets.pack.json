@@ -13,8 +13,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\images\\movie_a7a18dcd9b2b4363acf5da7b94f54af0.jpeg",
+      "PackagePath": "staticwebassets\\images\\movie_a7a18dcd9b2b4363acf5da7b94f54af0.jpeg"
+    },
+    {
       "Id": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\images\\movie_ad1ee33839d14d42902b8a0f8904a3d4.webp",
       "PackagePath": "staticwebassets\\images\\movie_ad1ee33839d14d42902b8a0f8904a3d4.webp"
+    },
+    {
+      "Id": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\images\\movie_bc5418da89d2403782e1dc477f3d167d.jpeg",
+      "PackagePath": "staticwebassets\\images\\movie_bc5418da89d2403782e1dc477f3d167d.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\images\\movie_d2066f3108a54c5983c8ff50cd72a67c.jpeg",
+      "PackagePath": "staticwebassets\\images\\movie_d2066f3108a54c5983c8ff50cd72a67c.jpeg"
     },
     {
       "Id": "C:\\Users\\ayaga\\RiderProjects\\AspCoreFirstApp\\AspCoreFirstApp\\wwwroot\\inception.jpeg",

@@ -2,8 +2,7 @@ using AspCoreFirstApp.Models;
 
 namespace AspCoreFirstApp.Repositories.Interfaces;
 
-public interface IMembershipTypeRepository
+public interface IMembershipTypeRepository : IGenericRepository<MembershipType>
 {
-    Task<IEnumerable<MembershipType>> GetAllAsync();
-    Task<MembershipType?> GetByIdAsync(int id);
+    // Méthodes spécifiques si nécessaire
 }

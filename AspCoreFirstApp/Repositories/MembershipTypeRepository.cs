@@ -4,24 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspCoreFirstApp.Repositories;
 
-public class MembershipTypeRepository : IMembershipTypeRepository
+public class MembershipTypeRepository : GenericRepository<MembershipType>, IMembershipTypeRepository
 {
     private readonly ApplicationDbContext _context;
 
-    public MembershipTypeRepository(ApplicationDbContext context)
+    public MembershipTypeRepository(ApplicationDbContext context) : base(context)
     {
         _context = context;
-    }
-
-    public async Task<IEnumerable<MembershipType>> GetAllAsync()
-    {
-        return await _context.MembershipTypes
-            .OrderBy(mt => mt.Id)
-            .ToListAsync();
-    }
-
-    public async Task<MembershipType?> GetByIdAsync(int id)
-    {
-        return await _context.MembershipTypes.FindAsync(id);
     }
 }

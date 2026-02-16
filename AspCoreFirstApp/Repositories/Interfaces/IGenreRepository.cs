@@ -2,8 +2,7 @@ using AspCoreFirstApp.Models;
 
 namespace AspCoreFirstApp.Repositories.Interfaces;
 
-public interface IGenreRepository
+public interface IGenreRepository : IGenericRepository<Genre>
 {
-    Task<IEnumerable<Genre>> GetAllAsync();
-    Task<Genre?> GetByIdAsync(Guid id);
+    // Méthodes spécifiques si nécessaire
 }
